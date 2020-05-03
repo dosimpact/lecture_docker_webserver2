@@ -1,8 +1,3 @@
-# lecture_docker_webserver2
-
-# 1. Dockerfile
-
-```js
 # ----------------------------------node react setting
 FROM node:13.12.0-alpine as builder
 
@@ -28,27 +23,3 @@ COPY --from=builder /usr/src/app/build /usr/share/nginx/html
 # 80포트 오픈하고 nginx 실행
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
-```
-
-# 2. .dockerignore
-
-```js
-server {
-  listen 80;
-  location / {
-    root   /usr/share/nginx/html;
-    index  index.html index.htm;
-    try_files $uri $uri/ /index.html;
-  }
-  error_page   500 502 503 504  /50x.html;
-  location = /50x.html {
-    root   /usr/share/nginx/html;
-  }
-}
-```
-
-# 3. scripts
-
-```
-
-```
