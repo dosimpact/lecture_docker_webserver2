@@ -47,8 +47,26 @@ server {
 }
 ```
 
-# 3. scripts
+# 3. 파일생성 ./conf/conf.d/default.conf
 
+```js
+server {
+  listen 80;
+  location / {
+    root   /usr/share/nginx/html;
+    index  index.html index.htm;
+    try_files $uri $uri/ /index.html;
+  }
+  error_page   500 502 503 504  /50x.html;
+  location = /50x.html {
+    root   /usr/share/nginx/html;
+  }
+}
 ```
 
+# 4. scripts
+
+```
+docker build -t webserver_2:0.0.1 .
+docker run -it -p 3001:80 --name webserver_2 webserver_2:0.0.1
 ```
